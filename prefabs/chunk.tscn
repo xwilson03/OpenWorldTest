@@ -9,7 +9,7 @@ size = Vector3(40, 0.25, 40)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2704g"]
 albedo_color = Color(0, 0.261208, 0.104913, 1)
 
-[node name="Ground" type="StaticBody3D"]
+[node name="Chunk" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
