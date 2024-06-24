@@ -16,8 +16,10 @@ script = ExtResource("2_jbuxh")
 [node name="OrbitCamera" parent="Player" instance=ExtResource("4_n1aw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="World" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
 shadow_enabled = true
 
-[node name="Chunk" parent="." instance=ExtResource("5_pa41d")]
+[node name="Chunk" parent="World" instance=ExtResource("5_pa41d")]
