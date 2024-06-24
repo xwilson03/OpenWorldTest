@@ -7,7 +7,7 @@ var world_chunks: Array[Node3D] = []
 
 const chunk_scene = preload("res://prefabs/chunk.tscn")
 
-func _ready():
+func _init():
     # Allocate chunk array
     var row_size: int = ((world_radius * 2) - 1)
     world_chunks.resize(row_size ** 2)
