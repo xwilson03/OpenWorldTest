@@ -1,7 +1,7 @@
 extends Node
 class_name WorldGenerator
 
-@export var world_radius: int = 50
+@export var world_radius: int = 100
 @export var chunk_size: float = 10
 var world_chunks: Array[Node3D] = []
 

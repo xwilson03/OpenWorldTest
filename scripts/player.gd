@@ -30,18 +30,25 @@ func _physics_process(delta):
 		direction.z -= 1;
 	if (Input.is_action_pressed("move_back")):
 		direction.z += 1;
-	if (Input.is_action_pressed("jump") and is_on_floor()):
-		target_velocity.y = jump_speed
 	
-	# Normalize movement vector
+	# Normalize direction vector
 	if (direction != Vector3.ZERO):
 		direction = direction.normalized()
 	
+	# Update horizontal velocity 
 	target_velocity.x = direction.x
 	target_velocity.z = direction.z
 	
-	if not is_on_floor():
+	# Update vertical velocity
+	if (Input.is_action_pressed("jump") and is_on_floor()):
+		target_velocity.y = jump_speed
+	elif not is_on_floor():
 		target_velocity.y -= fall_acceleration * delta
 	
+	# Transform local velocity to global velocity
 	velocity = (Quaternion(transform.basis) * target_velocity) * speed
+	
+	# Apply velocity and check for chunk boundaries
 	move_and_slide()
+	
+	

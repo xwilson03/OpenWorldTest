@@ -15,6 +15,7 @@ script = ExtResource("2_jbuxh")
 
 [node name="OrbitCamera" parent="Player" instance=ExtResource("4_n1aw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+max_follow_distance = 50.0
 
 [node name="World" type="Node3D" parent="."]
 script = ExtResource("4_yaodl")
