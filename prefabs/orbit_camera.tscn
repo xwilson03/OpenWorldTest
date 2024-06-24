@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://djh6nhygpb5os"]
+
+[ext_resource type="Script" path="res://scripts/camera_controller.gd" id="1_hbs34"]
+
+[node name="OrbitCamera" type="Node3D"]
+script = ExtResource("1_hbs34")
+
+[node name="Spring" type="SpringArm3D" parent="."]
+spring_length = 3.0
+
+[node name="Camera" type="Camera3D" parent="Spring"]
