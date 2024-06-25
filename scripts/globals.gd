@@ -22,6 +22,11 @@ signal _entered_new_chunk(direction: DIRECTION)
 # World (Public/Static)
 static var entered_new_chunk := Signal(instance._entered_new_chunk)
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #   Globals
+
+static var world_radius: int = 0
+static var chunk_size: float = 0
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #   Constants
 
 const GLOBAL_SENSITIVITY: float = 0.01
