@@ -10,7 +10,7 @@ var target_velocity := Vector3.ZERO
 var chunk_position := Vector3.ZERO
 
 
-func _ready():
+func _init():
     Globals.set_camera_x.connect(_on_set_camera_x)
 
 func _on_set_camera_x(value: float):
