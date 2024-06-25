@@ -22,7 +22,7 @@ func _init():
     world_chunks.resize(row_size ** 2)
     
     # Populate chunk array
-    var offset: float = ((row_size / 2.0) * Globals.chunk_size) - (Globals.chunk_size / 2.0)
+    var offset: float = ((row_size / 2.0) * Globals.chunk_size)
     
     for i in world_chunks.size():
         # Instantiate chunk at index-based position offset
