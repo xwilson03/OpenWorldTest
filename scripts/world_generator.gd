@@ -21,12 +21,12 @@ func _init():
     
     # Allocate chunk array
     var row_size: int = (Globals.world_radius * 2)
-    world_chunks.resize(row_size ** 2)
+    world_chunks.resize((row_size + 1) ** 2)
     
     # Populate chunk array
     var offset: float = ((row_size / 2.0) * Globals.chunk_size) - (Globals.chunk_size / 2.0)
     
-    for i in world_chunks.size():
+    for i in (row_size ** 2):
         # Instantiate chunk at index-based position offset
         var new_chunk = chunk_scene.instantiate()
         new_chunk.translate(Vector3(
@@ -40,11 +40,17 @@ func _init():
 
 func _on_entered_new_chunk(direction):
     match direction:
-        Globals.DIRECTION.X_POS:
+        Globals.DIRECTION.X_POS: # delete leftmost, add rightmost
             print("X+")
         Globals.DIRECTION.X_NEG:
             print("X-")
-        Globals.DIRECTION.Z_POS:
+        Globals.DIRECTION.Z_POS: # delete topmost, add bottommost
             print("Z+")
         Globals.DIRECTION.Z_NEG:
             print("Z-")
+
+func _add_row(row_idx: int):
+    pass
+
+func _add_col(cold_idx: int):
+    pass
