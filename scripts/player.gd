@@ -10,15 +10,15 @@ var target_velocity := Vector3.ZERO
 var chunk_position := Vector3.ZERO
 
 
-func _init():
+func _init() -> void:
     Globals.set_camera_x.connect(_on_set_camera_x)
 
-func _on_set_camera_x(value: float):
+func _on_set_camera_x(value: float) -> void:
     # Reset and update player x rotation to prevent precision loss
     transform.basis = Basis()
     rotate_y(value)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
     # Zero movement vector
     var direction := Vector3.ZERO
     
@@ -54,7 +54,7 @@ func _physics_process(delta):
     update_chunk_pos()
 
 # Emit signal when crossing chunk boundaries
-func update_chunk_pos():
+func update_chunk_pos() -> void:
     # Update position within current chunk
     chunk_position += get_position_delta()
     
