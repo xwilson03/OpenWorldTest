@@ -1,8 +1,9 @@
 extends Node
 class_name WorldGenerator
 
-@export var world_radius: int = 50
+@export var world_radius: int = 2
 @export var chunk_size: float = 10.1
+@export var chunk_boundary_tolerance: float = 0.1
 
 const chunk_scene = preload("res://prefabs/chunk.tscn")
 
@@ -13,16 +14,17 @@ func _init():
     # Initialize global world variables
     Globals.world_radius = world_radius
     Globals.chunk_size = chunk_size
+    Globals.chunk_boundary_tolerance = chunk_boundary_tolerance
     
     # Connect global signals
     Globals.entered_new_chunk.connect(_on_entered_new_chunk)
     
     # Allocate chunk array
-    var row_size: int = ((Globals.world_radius * 2) - 1)
+    var row_size: int = (Globals.world_radius * 2)
     world_chunks.resize(row_size ** 2)
     
     # Populate chunk array
-    var offset: float = ((row_size / 2.0) * Globals.chunk_size)
+    var offset: float = ((row_size / 2.0) * Globals.chunk_size) - (Globals.chunk_size / 2.0)
     
     for i in world_chunks.size():
         # Instantiate chunk at index-based position offset
