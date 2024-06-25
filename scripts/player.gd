@@ -47,7 +47,7 @@ func _physics_process(delta):
         target_velocity.y -= fall_acceleration * delta
     
     # Transform local velocity to global velocity
-    velocity = (Quaternion(transform.basis) * target_velocity) * speed
+    velocity = (transform.basis * target_velocity) * speed
     
     # Apply velocity
     move_and_slide()
