@@ -22,13 +22,14 @@ signal _entered_new_chunk(direction: DIRECTION)
 # World (Public/Static)
 static var entered_new_chunk := Signal(instance._entered_new_chunk)
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #   Globals
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #   Variables
 
+# World Generation
 static var world_radius: int = 0
 static var chunk_size: float = 0
+static var chunk_boundary_tolerance: float = 0
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #   Constants
-
+# Mouse Sensitivity
 const GLOBAL_SENSITIVITY: float = 0.01
 const X_SENSITIVITY: float = 0.9 * GLOBAL_SENSITIVITY
 const Y_SENSITIVITY: float = 0.45 * GLOBAL_SENSITIVITY
