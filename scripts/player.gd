@@ -7,6 +7,7 @@ class_name Player
 @export var fall_acceleration: float = 3
 
 var target_velocity := Vector3.ZERO
+var chunk_position := Vector3.ZERO
 
 
 func _ready():
@@ -48,7 +49,30 @@ func _physics_process(delta):
     # Transform local velocity to global velocity
     velocity = (Quaternion(transform.basis) * target_velocity) * speed
     
-    # Apply velocity and check for chunk boundaries
+    # Apply velocity
     move_and_slide()
+    update_chunk_pos()
+
+func update_chunk_pos():
+    # Emit signal when crossing chunk boundaries
+    chunk_position += get_position_delta()
     
+    # X_POS
+    if chunk_position.x >= Globals.chunk_size:
+        chunk_position.x -= Globals.chunk_size
+        Globals.entered_new_chunk.emit(Globals.DIRECTION.X_POS)
     
+    # X_NEG
+    elif chunk_position.x < 0:
+        chunk_position.x += Globals.chunk_size
+        Globals.entered_new_chunk.emit(Globals.DIRECTION.X_NEG)
+    
+    # Z_POS
+    if chunk_position.z >= Globals.chunk_size:
+        chunk_position.z -= Globals.chunk_size
+        Globals.entered_new_chunk.emit(Globals.DIRECTION.Z_POS)
+    
+    # Z_NEG
+    elif chunk_position.z < 0:
+        chunk_position.z += Globals.chunk_size
+        Globals.entered_new_chunk.emit(Globals.DIRECTION.Z_NEG)
