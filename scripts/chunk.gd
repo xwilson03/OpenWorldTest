@@ -11,7 +11,7 @@ enum LOD {
     LOW,
 }
 
-func _init() -> void:
+func _ready() -> void:
     set_lod(LOD.LOW)
 
 func set_lod(lod: LOD) -> void:

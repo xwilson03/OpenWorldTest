@@ -5,13 +5,13 @@ class_name WorldGenerator
 @export var chunk_size: float
 @export var chunk_boundary_tolerance: float
 
-const chunk_scene = preload("res://prefabs/chunk.tscn")
+const chunk_scene: PackedScene = preload("res://prefabs/chunk.tscn")
 
 var world_chunks: ChunkGrid
 var world_size: Vector2i
 
 
-func _init() -> void:
+func _ready() -> void:
     # Initialize global world variables
     Globals.world_radius = world_radius
     Globals.chunk_size = chunk_size
