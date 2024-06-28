@@ -104,28 +104,24 @@ func move(direction: Globals.DIRECTION) -> void:
     match direction:
 
         Globals.DIRECTION.X_POS:
-            print("X+")
             _delete_column(_bounds[RIGHT])
             _bounds[LEFT] -= 1
             _bounds[RIGHT] -= 1
             _add_column(_bounds[LEFT])
 
         Globals.DIRECTION.X_NEG:
-            print("X-")
             _delete_column(_bounds[LEFT])
             _bounds[RIGHT] += 1
             _bounds[LEFT] += 1
             _add_column(_bounds[RIGHT])
 
         Globals.DIRECTION.Z_POS:
-            print("Z+")
             _delete_row(_bounds[BOTTOM])
             _bounds[TOP] -= 1
             _bounds[BOTTOM] -= 1
             _add_row(_bounds[TOP])
 
         Globals.DIRECTION.Z_NEG:
-            print("Z-")
             _delete_row(_bounds[TOP])
             _bounds[BOTTOM] += 1
             _bounds[TOP] += 1
