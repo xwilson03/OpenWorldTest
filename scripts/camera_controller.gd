@@ -16,7 +16,7 @@ func _input(_event: InputEvent) -> void:
 
 func _ready() -> void:
     Globals.set_camera_y.connect(_on_set_camera_y)
-    
+
     camera_spring = get_child(0)
     if camera_spring == null:
         print("Player: Unable to find Camera Spring node.")
@@ -33,7 +33,7 @@ func _on_zoom_in() -> void:
         max_follow_distance
     )
     camera_spring.spring_length = new_length
-    
+
 func _on_zoom_out() -> void:
     var new_length: float = clamp(
         camera_spring.spring_length + distance_per_scroll,

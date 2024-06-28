@@ -45,7 +45,7 @@ func _init(
     for x in _size.x:
         for y in _size.y:
             _create_chunk(x, y)
-    
+
 func _out_of_bounds(x: int, y: int) -> bool:
     if (x < _bounds[LEFT] or x > _bounds[RIGHT]
      or y < _bounds[TOP] or y > _bounds[BOTTOM]):
@@ -69,7 +69,7 @@ func _world_pos(x: int, y: int) -> Vector3:
 func _create_chunk(x: int, y: int) -> void:
     if (_out_of_bounds(x, y)):
         return
-    
+
     var chunk: Node3D = _chunk_scene.instantiate()
     chunk.translate(_world_pos(x, y))
 
@@ -79,7 +79,7 @@ func _create_chunk(x: int, y: int) -> void:
 func _delete_chunk(x: int, y: int) -> void:
     if (_out_of_bounds(x, y)):
         return
-    
+
     var chunk: Node3D = _array[_wrapped_idx(x, y)]
     _parent_node.remove_child(chunk)
     chunk.queue_free()

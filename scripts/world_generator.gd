@@ -16,10 +16,10 @@ func _init() -> void:
     Globals.world_radius = world_radius
     Globals.chunk_size = chunk_size
     Globals.chunk_boundary_tolerance = chunk_boundary_tolerance
-    
+
     # Connect global signals
     Globals.entered_new_chunk.connect(_on_entered_new_chunk)
-    
+
     # Allocate chunk array
     var row_size: int = Globals.world_radius * 2
     world_size = Vector2i(row_size, row_size)
