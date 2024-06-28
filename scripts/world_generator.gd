@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name WorldGenerator
 
 @export var world_radius: int = 2
@@ -7,10 +7,11 @@ class_name WorldGenerator
 
 const chunk_scene = preload("res://prefabs/chunk.tscn")
 
-var world_chunks: Array[Node3D] = []
+var world_chunks: ChunkGrid
+var world_size: Vector2i
 
 
-func _init():
+func _init() -> void:
     # Initialize global world variables
     Globals.world_radius = world_radius
     Globals.chunk_size = chunk_size
@@ -20,37 +21,14 @@ func _init():
     Globals.entered_new_chunk.connect(_on_entered_new_chunk)
     
     # Allocate chunk array
-    var row_size: int = (Globals.world_radius * 2)
-    world_chunks.resize((row_size + 1) ** 2)
-    
-    # Populate chunk array
-    var offset: float = ((row_size / 2.0) * Globals.chunk_size) - (Globals.chunk_size / 2.0)
-    
-    for i in (row_size ** 2):
-        # Instantiate chunk at index-based position offset
-        var new_chunk = chunk_scene.instantiate()
-        new_chunk.translate(Vector3(
-            (i % row_size) * Globals.chunk_size - offset,
-            0,
-            (i / row_size) * Globals.chunk_size - offset
-        ))
-        
-        world_chunks.insert(i, new_chunk)
-        add_child(new_chunk)
+    var row_size: int = Globals.world_radius * 2
+    world_size = Vector2i(row_size, row_size)
+    world_chunks = ChunkGrid.new(
+        self,
+        world_size,
+        chunk_scene,
+        Vector2(chunk_size, chunk_size)
+    )
 
-func _on_entered_new_chunk(direction):
-    match direction:
-        Globals.DIRECTION.X_POS: # delete leftmost, add rightmost
-            print("X+")
-        Globals.DIRECTION.X_NEG:
-            print("X-")
-        Globals.DIRECTION.Z_POS: # delete topmost, add bottommost
-            print("Z+")
-        Globals.DIRECTION.Z_NEG:
-            print("Z-")
-
-func _add_row(row_idx: int):
-    pass
-
-func _add_col(cold_idx: int):
-    pass
+func _on_entered_new_chunk(direction: Globals.DIRECTION) -> void:
+    world_chunks.move(direction)
