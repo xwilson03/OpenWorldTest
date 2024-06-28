@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/input_controller.gd" id="2_jbuxh"]
 [ext_resource type="PackedScene" uid="uid://cvouln4227y2c" path="res://prefabs/player.tscn" id="3_gncg1"]
 [ext_resource type="PackedScene" uid="uid://djh6nhygpb5os" path="res://prefabs/orbit_camera.tscn" id="4_n1aw2"]
-[ext_resource type="PackedScene" uid="uid://bkjhriqj5k5ju" path="res://prefabs/ground.tscn" id="5_pa41d"]
+[ext_resource type="Script" path="res://scripts/world_generator.gd" id="4_yaodl"]
 
 [node name="Root" type="Node3D"]
 
@@ -15,10 +15,14 @@ script = ExtResource("2_jbuxh")
 
 [node name="OrbitCamera" parent="Player" instance=ExtResource("4_n1aw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+max_follow_distance = 50.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="World" type="Node3D" parent="."]
+script = ExtResource("4_yaodl")
+world_radius = 10
+chunk_size = 40.1
+chunk_boundary_tolerance = 0.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
 shadow_enabled = true
-
-[node name="Ground" parent="." instance=ExtResource("5_pa41d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
