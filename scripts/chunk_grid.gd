@@ -82,7 +82,7 @@ func _delete_chunk(x: int, y: int) -> void:
     
     var chunk: Node3D = _array[_wrapped_idx(x, y)]
     _parent_node.remove_child(chunk)
-    #chunk.queue_free()
+    chunk.queue_free()
 
 func _add_column(x: int) -> void:
     for i in range(_bounds[TOP], _bounds[BOTTOM] + 1):
