@@ -1,20 +1,251 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkjhriqj5k5ju"]
+[gd_scene load_steps=11 format=3 uid="uid://cjbhimimbjlq5"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d05e6"]
+[ext_resource type="Script" path="res://scripts/chunk.gd" id="1_eqjvd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_25gpj"]
 size = Vector3(40, 0.25, 40)
 
-[sub_resource type="BoxMesh" id="BoxMesh_i25a4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo2s1"]
+albedo_color = Color(0, 0.237179, 0.0603443, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxaw8"]
 size = Vector3(40, 0.25, 40)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2704g"]
-albedo_color = Color(0, 0.261208, 0.104913, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_ganvj"]
+size = Vector3(80, 0.25, 80)
 
-[node name="Chunk" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0meg"]
+albedo_color = Color(0.372939, 0.339155, 4.81307e-07, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_d05e6")
+[sub_resource type="BoxShape3D" id="BoxShape3D_me7qi"]
+size = Vector3(80, 0.25, 80)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_i25a4")
-surface_material_override/0 = SubResource("StandardMaterial3D_2704g")
+[sub_resource type="BoxMesh" id="BoxMesh_4djl8"]
+size = Vector3(160, 0.25, 160)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7cju"]
+albedo_color = Color(0.391409, 0.0752441, 2.40654e-08, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e03f8"]
+size = Vector3(160, 0.25, 160)
+
+[node name="Chunk" type="Node3D" node_paths=PackedStringArray("high_lod", "med_lod", "low_lod")]
+script = ExtResource("1_eqjvd")
+high_lod = NodePath("High")
+med_lod = NodePath("Medium")
+low_lod = NodePath("Low")
+
+[node name="High" type="Node3D" parent="."]
+
+[node name="HighLODChunk" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -60)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk2" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -60)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk2"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk2"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk3" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -60)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk3"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk3"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk4" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -60)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk4"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk4"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk5" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk5"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk5"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk6" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk6"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk6"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk7" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk7"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk7"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk8" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk8"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk8"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk9" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk9"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk9"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk10" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk10"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk10"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk11" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk11"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk11"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk12" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk12"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk12"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk13" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 60)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk13"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk13"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk14" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 60)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk14"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk14"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk15" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 60)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk15"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk15"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="HighLODChunk16" type="StaticBody3D" parent="High"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk16"]
+mesh = SubResource("BoxMesh_25gpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="High/HighLODChunk16"]
+shape = SubResource("BoxShape3D_vxaw8")
+
+[node name="Medium" type="Node3D" parent="."]
+
+[node name="MediumLODChunk" type="StaticBody3D" parent="Medium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -40)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Medium/MediumLODChunk"]
+mesh = SubResource("BoxMesh_ganvj")
+surface_material_override/0 = SubResource("StandardMaterial3D_m0meg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Medium/MediumLODChunk"]
+shape = SubResource("BoxShape3D_me7qi")
+
+[node name="MediumLODChunk2" type="StaticBody3D" parent="Medium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -40)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Medium/MediumLODChunk2"]
+mesh = SubResource("BoxMesh_ganvj")
+surface_material_override/0 = SubResource("StandardMaterial3D_m0meg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Medium/MediumLODChunk2"]
+shape = SubResource("BoxShape3D_me7qi")
+
+[node name="MediumLODChunk3" type="StaticBody3D" parent="Medium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 40)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Medium/MediumLODChunk3"]
+mesh = SubResource("BoxMesh_ganvj")
+surface_material_override/0 = SubResource("StandardMaterial3D_m0meg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Medium/MediumLODChunk3"]
+shape = SubResource("BoxShape3D_me7qi")
+
+[node name="MediumLODChunk4" type="StaticBody3D" parent="Medium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 40)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Medium/MediumLODChunk4"]
+mesh = SubResource("BoxMesh_ganvj")
+surface_material_override/0 = SubResource("StandardMaterial3D_m0meg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Medium/MediumLODChunk4"]
+shape = SubResource("BoxShape3D_me7qi")
+
+[node name="Low" type="Node3D" parent="."]
+
+[node name="LowLODChunk" type="StaticBody3D" parent="Low"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Low/LowLODChunk"]
+mesh = SubResource("BoxMesh_4djl8")
+surface_material_override/0 = SubResource("StandardMaterial3D_s7cju")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Low/LowLODChunk"]
+shape = SubResource("BoxShape3D_e03f8")
