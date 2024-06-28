@@ -1,8 +1,8 @@
 extends Node3D
 class_name WorldGenerator
 
-@export var world_radius: int = 2
-@export var chunk_size: float = 10.1
+@export var world_radius: int = 60
+@export var chunk_size: float = 10
 @export var chunk_boundary_tolerance: float = 0.1
 
 const chunk_scene = preload("res://prefabs/chunk.tscn")
