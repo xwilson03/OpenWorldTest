@@ -3,42 +3,42 @@
 [ext_resource type="Script" path="res://scripts/chunk.gd" id="1_eqjvd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_25gpj"]
-size = Vector3(40, 0.25, 40)
+size = Vector3(10, 0.25, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo2s1"]
 albedo_color = Color(0, 0.237179, 0.0603443, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxaw8"]
-size = Vector3(40, 0.25, 40)
+size = Vector3(10, 0.25, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ganvj"]
-size = Vector3(80, 0.25, 80)
+size = Vector3(20.1, 0.25, 20.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0meg"]
 albedo_color = Color(0.372939, 0.339155, 4.81307e-07, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_me7qi"]
-size = Vector3(80, 0.25, 80)
+size = Vector3(20.1, 0.25, 20.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4djl8"]
-size = Vector3(160, 0.25, 160)
+size = Vector3(40.3, 0.25, 40.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7cju"]
 albedo_color = Color(0.391409, 0.0752441, 2.40654e-08, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e03f8"]
-size = Vector3(160, 0.25, 160)
+size = Vector3(40.3, 0.25, 40.3)
 
-[node name="Chunk" type="Node3D" node_paths=PackedStringArray("high_lod", "med_lod", "low_lod")]
+[node name="Chunk" type="Node3D" node_paths=PackedStringArray("_high_lod", "_med_lod", "_low_lod")]
 script = ExtResource("1_eqjvd")
-high_lod = NodePath("High")
-med_lod = NodePath("Medium")
-low_lod = NodePath("Low")
+_high_lod = NodePath("High")
+_med_lod = NodePath("Medium")
+_low_lod = NodePath("Low")
 
 [node name="High" type="Node3D" parent="."]
 
 [node name="HighLODChunk" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.15, 0, -15.15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -48,7 +48,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk2" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05, 0, -15.15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk2"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -58,7 +58,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk3" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05, 0, -15.15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk3"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -68,7 +68,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk4" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.15, 0, -15.15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk4"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -78,7 +78,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk5" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.15, 0, -5.05)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk5"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -88,7 +88,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk6" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05, 0, -5.05)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk6"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -98,7 +98,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk7" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05, 0, -5.05)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk7"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -108,7 +108,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk8" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.15, 0, -5.05)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk8"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -118,7 +118,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk9" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.15, 0, 5.05)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk9"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -128,7 +128,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk10" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05, 0, 5.05)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk10"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -138,7 +138,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk11" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05, 0, 5.05)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk11"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -148,7 +148,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk12" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.15, 0, 5.05)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk12"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -158,7 +158,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk13" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.15, 0, 15.15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk13"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -168,7 +168,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk14" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05, 0, 15.15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk14"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -178,7 +178,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk15" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05, 0, 15.15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk15"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -188,7 +188,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
 shape = SubResource("BoxShape3D_vxaw8")
 
 [node name="HighLODChunk16" type="StaticBody3D" parent="High"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.15, 0, 15.15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="High/HighLODChunk16"]
 mesh = SubResource("BoxMesh_25gpj")
@@ -200,7 +200,7 @@ shape = SubResource("BoxShape3D_vxaw8")
 [node name="Medium" type="Node3D" parent="."]
 
 [node name="MediumLODChunk" type="StaticBody3D" parent="Medium"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1, 0, -10.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Medium/MediumLODChunk"]
 mesh = SubResource("BoxMesh_ganvj")
@@ -210,7 +210,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m0meg")
 shape = SubResource("BoxShape3D_me7qi")
 
 [node name="MediumLODChunk2" type="StaticBody3D" parent="Medium"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1, 0, -10.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Medium/MediumLODChunk2"]
 mesh = SubResource("BoxMesh_ganvj")
@@ -220,7 +220,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m0meg")
 shape = SubResource("BoxShape3D_me7qi")
 
 [node name="MediumLODChunk3" type="StaticBody3D" parent="Medium"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1, 0, 10.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Medium/MediumLODChunk3"]
 mesh = SubResource("BoxMesh_ganvj")
@@ -230,7 +230,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m0meg")
 shape = SubResource("BoxShape3D_me7qi")
 
 [node name="MediumLODChunk4" type="StaticBody3D" parent="Medium"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1, 0, 10.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Medium/MediumLODChunk4"]
 mesh = SubResource("BoxMesh_ganvj")

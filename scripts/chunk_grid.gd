@@ -10,7 +10,7 @@ enum {
 const BUFFER_SIZE: int = 1
 var _size: Vector2i
 
-var _array: Array[Node3D] = []
+var _array: Array[Chunk] = []
 var _bounds: Array[int] = []
 var _offset: Vector2
 
@@ -70,7 +70,7 @@ func _create_chunk(x: int, y: int) -> void:
     if (_out_of_bounds(x, y)):
         return
 
-    var chunk: Node3D = _chunk_scene.instantiate()
+    var chunk: Chunk = _chunk_scene.instantiate()
     chunk.translate(_world_pos(x, y))
 
     _array[_wrapped_idx(x, y)] = chunk
@@ -80,7 +80,7 @@ func _delete_chunk(x: int, y: int) -> void:
     if (_out_of_bounds(x, y)):
         return
 
-    var chunk: Node3D = _array[_wrapped_idx(x, y)]
+    var chunk: Chunk = _array[_wrapped_idx(x, y)]
     _parent_node.remove_child(chunk)
     chunk.queue_free()
 
