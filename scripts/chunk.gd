@@ -18,10 +18,6 @@ func _ready() -> void:
     remove_child(_med_lod)
     _cur_lod = LOD.LOW
 
-    set_lod(Globals.global_lod)
-
-    Globals.set_lod.connect(set_lod)
-
 func set_lod(new_lod: LOD) -> void:
 
     if new_lod == _cur_lod:

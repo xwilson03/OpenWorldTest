@@ -18,11 +18,9 @@ static var set_camera_dist := Signal(instance._set_camera_dist)
 
 # World (Private/Instanced)
 signal _entered_new_chunk(direction: DIRECTION)
-signal _set_lod(lod: Chunk.LOD)
 
 # World (Public/Static)
 static var entered_new_chunk := Signal(instance._entered_new_chunk)
-static var set_lod := Signal(instance._set_lod)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #   Variables
 
@@ -30,7 +28,6 @@ static var set_lod := Signal(instance._set_lod)
 static var world_radius: int = 0
 static var chunk_size: float = 0
 static var chunk_boundary_tolerance: float = 0
-static var global_lod: Chunk.LOD = Chunk.LOD.HIGH
 
 # Mouse Sensitivity
 const GLOBAL_SENSITIVITY: float = 0.01
