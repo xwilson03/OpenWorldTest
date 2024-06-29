@@ -19,11 +19,11 @@ max_follow_distance = 200.0
 
 [node name="World" type="Node3D" parent="."]
 script = ExtResource("4_yaodl")
-world_radius = 4
+world_radius = 20
 chunk_size = 40.4
 chunk_boundary_tolerance = 0.1
-high_lod_distance = 80.0
-medium_lod_distance = 160.0
+high_lod_distance = 120.0
+medium_lod_distance = 240.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0)
