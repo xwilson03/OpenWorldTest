@@ -103,23 +103,21 @@ func _delete_row(y: int) -> void:
         _delete_chunk(i, y)
 
 func _on_player_xz(pos: Vector2) -> void:
+
     var center := Vector2(
-        ((_bounds[RIGHT] - _bounds[LEFT] + 1) / 2.0) * _chunk_size.x + _offset.x,
-        ((_bounds[BOTTOM] - _bounds[TOP] + 1) / 2.0) * _chunk_size.y + _offset.y
+        -((_bounds[RIGHT] + _bounds[LEFT] + 1 - _size.x) / 2) * _chunk_size.x + _offset.x,
+        -((_bounds[BOTTOM] + _bounds[TOP] + 1 - _size.y) / 2) * _chunk_size.y + _offset.y
     )
 
-    print(_offset)
-    print(pos, "\t", center)
+    if (pos.x > center.x + _chunk_size.x):
+        _move(Globals.DIRECTION.X_POS)
+    elif (pos.x < center.x - _chunk_size.x):
+        _move(Globals.DIRECTION.X_NEG)
 
-    #if ((pos.x - center.x) > _chunk_size.x):
-        #_move(Globals.DIRECTION.X_POS)
-    #elif ((pos.x - center.x) < -_chunk_size.x):
-        #_move(Globals.DIRECTION.X_NEG)
-#
-    #if ((pos.y - center.y) > _chunk_size.y):
-        #_move(Globals.DIRECTION.Z_POS)
-    #elif ((pos.y - center.y) < -_chunk_size.y):
-        #_move(Globals.DIRECTION.Z_NEG)
+    if (pos.y > center.y + _chunk_size.y):
+        _move(Globals.DIRECTION.Z_POS)
+    elif (pos.y < center.y - _chunk_size.y):
+        _move(Globals.DIRECTION.Z_NEG)
 
 func _move(direction: Globals.DIRECTION) -> void:
     match direction:
