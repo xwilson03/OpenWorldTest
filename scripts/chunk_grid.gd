@@ -46,6 +46,8 @@ func _init(
         for y in _size.y:
             _create_chunk(x, y)
 
+    Globals.player_xz.connect(_on_player_xz)
+
 func _out_of_bounds(x: int, y: int) -> bool:
     if (x < _bounds[LEFT] or x > _bounds[RIGHT]
      or y < _bounds[TOP] or y > _bounds[BOTTOM]):
@@ -100,7 +102,10 @@ func _delete_row(y: int) -> void:
     for i in range(_bounds[LEFT], _bounds[RIGHT] + 1):
         _delete_chunk(i, y)
 
-func move(direction: Globals.DIRECTION) -> void:
+func _on_player_xz(pos: Vector2) -> void:
+    pass
+
+func _move(direction: Globals.DIRECTION) -> void:
     match direction:
 
         Globals.DIRECTION.X_POS:
