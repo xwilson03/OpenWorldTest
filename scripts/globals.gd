@@ -16,6 +16,12 @@ static var set_camera_x := Signal(instance._set_camera_x)
 static var set_camera_y := Signal(instance._set_camera_y)
 static var set_camera_dist := Signal(instance._set_camera_dist)
 
+# Player (Private/Instanced)
+signal _player_xz(pos: Vector2)
+
+# Player (Public/Static)
+static var player_xz := Signal(instance._player_xz)
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #   Variables
 
 # World Generation
