@@ -10,7 +10,7 @@ enum {
 const BUFFER_SIZE: int = 1
 var _size: Vector2i
 
-var _array: Array[Node3D] = []
+var _array: Array[Chunk] = []
 var _bounds: Array[int] = []
 var _offset: Vector2
 
@@ -46,6 +46,8 @@ func _init(
         for y in _size.y:
             _create_chunk(x, y)
 
+    Globals.player_xz.connect(_on_player_xz)
+
 func _out_of_bounds(x: int, y: int) -> bool:
     if (x < _bounds[LEFT] or x > _bounds[RIGHT]
      or y < _bounds[TOP] or y > _bounds[BOTTOM]):
@@ -70,7 +72,7 @@ func _create_chunk(x: int, y: int) -> void:
     if (_out_of_bounds(x, y)):
         return
 
-    var chunk: Node3D = _chunk_scene.instantiate()
+    var chunk: Chunk = _chunk_scene.instantiate()
     chunk.translate(_world_pos(x, y))
 
     _array[_wrapped_idx(x, y)] = chunk
@@ -80,7 +82,7 @@ func _delete_chunk(x: int, y: int) -> void:
     if (_out_of_bounds(x, y)):
         return
 
-    var chunk: Node3D = _array[_wrapped_idx(x, y)]
+    var chunk: Chunk = _array[_wrapped_idx(x, y)]
     _parent_node.remove_child(chunk)
     chunk.queue_free()
 
@@ -100,7 +102,24 @@ func _delete_row(y: int) -> void:
     for i in range(_bounds[LEFT], _bounds[RIGHT] + 1):
         _delete_chunk(i, y)
 
-func move(direction: Globals.DIRECTION) -> void:
+func _on_player_xz(pos: Vector2) -> void:
+
+    var center := Vector2(
+        -((_bounds[RIGHT] + _bounds[LEFT] + 1 - _size.x) / 2) * _chunk_size.x + _offset.x,
+        -((_bounds[BOTTOM] + _bounds[TOP] + 1 - _size.y) / 2) * _chunk_size.y + _offset.y
+    )
+
+    if (pos.x > center.x + _chunk_size.x):
+        _move(Globals.DIRECTION.X_POS)
+    elif (pos.x < center.x - _chunk_size.x):
+        _move(Globals.DIRECTION.X_NEG)
+
+    if (pos.y > center.y + _chunk_size.y):
+        _move(Globals.DIRECTION.Z_POS)
+    elif (pos.y < center.y - _chunk_size.y):
+        _move(Globals.DIRECTION.Z_NEG)
+
+func _move(direction: Globals.DIRECTION) -> void:
     match direction:
 
         Globals.DIRECTION.X_POS:

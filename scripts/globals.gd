@@ -16,11 +16,11 @@ static var set_camera_x := Signal(instance._set_camera_x)
 static var set_camera_y := Signal(instance._set_camera_y)
 static var set_camera_dist := Signal(instance._set_camera_dist)
 
-# World (Private/Instanced)
-signal _entered_new_chunk(direction: DIRECTION)
+# Player (Private/Instanced)
+signal _player_xz(pos: Vector2)
 
-# World (Public/Static)
-static var entered_new_chunk := Signal(instance._entered_new_chunk)
+# Player (Public/Static)
+static var player_xz := Signal(instance._player_xz)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #   Variables
 
@@ -28,6 +28,10 @@ static var entered_new_chunk := Signal(instance._entered_new_chunk)
 static var world_radius: int = 0
 static var chunk_size: float = 0
 static var chunk_boundary_tolerance: float = 0
+
+# LOD parameters
+static var high_lod_distance: float = 0
+static var medium_lod_distance: float = 0
 
 # Mouse Sensitivity
 const GLOBAL_SENSITIVITY: float = 0.01
