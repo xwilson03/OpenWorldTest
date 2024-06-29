@@ -29,6 +29,10 @@ static var world_radius: int = 0
 static var chunk_size: float = 0
 static var chunk_boundary_tolerance: float = 0
 
+# LOD parameters
+static var high_lod_distance: float = 0
+static var medium_lod_distance: float = 0
+
 # Mouse Sensitivity
 const GLOBAL_SENSITIVITY: float = 0.01
 const X_SENSITIVITY: float = 0.9 * GLOBAL_SENSITIVITY

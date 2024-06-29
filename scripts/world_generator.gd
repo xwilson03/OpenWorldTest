@@ -5,6 +5,9 @@ class_name WorldGenerator
 @export var chunk_size: float
 @export var chunk_boundary_tolerance: float
 
+@export var high_lod_distance: float
+@export var medium_lod_distance: float
+
 const chunk_scene: PackedScene = preload("res://prefabs/chunk.tscn")
 
 var world_chunks: ChunkGrid
@@ -16,6 +19,9 @@ func _ready() -> void:
     Globals.world_radius = world_radius
     Globals.chunk_size = chunk_size
     Globals.chunk_boundary_tolerance = chunk_boundary_tolerance
+
+    Globals.high_lod_distance = high_lod_distance
+    Globals.medium_lod_distance = medium_lod_distance
 
     # Connect global signals
     Globals.entered_new_chunk.connect(_on_entered_new_chunk)
