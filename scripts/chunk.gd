@@ -18,6 +18,11 @@ func _ready() -> void:
     remove_child(_med_lod)
     _cur_lod = LOD.LOW
 
+    Globals.player_xz.connect(_on_player_xz)
+
+func _on_player_xz(pos: Vector2) -> void:
+    pass
+
 func set_lod(new_lod: LOD) -> void:
 
     if new_lod == _cur_lod:
