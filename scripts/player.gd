@@ -51,33 +51,3 @@ func _physics_process(delta: float) -> void:
 
     # Apply velocity
     move_and_slide()
-    update_chunk_pos()
-
-# Emit signal when crossing chunk boundaries
-func update_chunk_pos() -> void:
-    # Update position within current chunk
-    chunk_position += get_position_delta()
-
-    # Calculate chunk boundaries using globals
-    var positive_bound: float = (Globals.chunk_size + Globals.chunk_boundary_tolerance)
-    var negative_bound: float = -Globals.chunk_boundary_tolerance
-
-    # X_POS
-    if chunk_position.x >= positive_bound:
-        chunk_position.x -= Globals.chunk_size
-        Globals.entered_new_chunk.emit(Globals.DIRECTION.X_POS)
-
-    # X_NEG
-    elif chunk_position.x < negative_bound:
-        chunk_position.x += Globals.chunk_size
-        Globals.entered_new_chunk.emit(Globals.DIRECTION.X_NEG)
-
-    # Z_POS
-    if chunk_position.z >= positive_bound:
-        chunk_position.z -= Globals.chunk_size
-        Globals.entered_new_chunk.emit(Globals.DIRECTION.Z_POS)
-
-    # Z_NEG
-    elif chunk_position.z < negative_bound:
-        chunk_position.z += Globals.chunk_size
-        Globals.entered_new_chunk.emit(Globals.DIRECTION.Z_NEG)

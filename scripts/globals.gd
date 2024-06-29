@@ -16,12 +16,6 @@ static var set_camera_x := Signal(instance._set_camera_x)
 static var set_camera_y := Signal(instance._set_camera_y)
 static var set_camera_dist := Signal(instance._set_camera_dist)
 
-# World (Private/Instanced)
-signal _entered_new_chunk(direction: DIRECTION)
-
-# World (Public/Static)
-static var entered_new_chunk := Signal(instance._entered_new_chunk)
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #   Variables
 
 # World Generation

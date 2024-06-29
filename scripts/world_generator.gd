@@ -23,9 +23,6 @@ func _ready() -> void:
     Globals.high_lod_distance = high_lod_distance
     Globals.medium_lod_distance = medium_lod_distance
 
-    # Connect global signals
-    Globals.entered_new_chunk.connect(_on_entered_new_chunk)
-
     # Allocate chunk array
     var row_size: int = Globals.world_radius * 2
     world_size = Vector2i(row_size, row_size)
@@ -35,6 +32,3 @@ func _ready() -> void:
         chunk_scene,
         Vector2(chunk_size, chunk_size)
     )
-
-func _on_entered_new_chunk(direction: Globals.DIRECTION) -> void:
-    world_chunks.move(direction)
