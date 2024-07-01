@@ -28,17 +28,14 @@ func _ready() -> void:
 func _on_player_xz(pos: Vector2) -> void:
     var dist_to_player: float = (pos - Vector2(position.x, position.z)).length()
 
-    dist_to_player -= Globals.high_lod_distance
-    if (dist_to_player <= 0):
-        set_lod(LOD.HIGH)
-        return
+    if dist_to_player >= Globals.high_lod_distance + Globals.medium_lod_distance:
+        set_lod(LOD.LOW)
 
-    dist_to_player -= Globals.medium_lod_distance
-    if (dist_to_player <= 0):
+    elif dist_to_player >= Globals.high_lod_distance:
         set_lod(LOD.MEDIUM)
-        return
 
-    set_lod(LOD.LOW)
+    else:
+        set_lod(LOD.HIGH)
 
 func set_lod(new_lod: LOD) -> void:
 
