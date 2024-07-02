@@ -1,61 +1,34 @@
 extends Node3D
 class_name Chunk
 
-@export var _high_lod_parent: Node3D
-@export var _high_lod: Array[Node3D]
-@export var _med_lod_parent: Node3D
-@export var _med_lod: Array[Node3D]
-@export var _low_lod_parent: Node3D
-@export var _low_lod: Node3D
+@export var _lod: Globals.LOD
+@export var _this: Node3D
+@export var _children: Array[Node3D]
 
-var _cur_lod: Globals.LOD
+var _showing_children: bool
 
 func _ready() -> void:
-    for chunk in _high_lod:
-        _high_lod_parent.remove_child(chunk)
-    for chunk in _med_lod:
-        _med_lod_parent.remove_child(chunk)
-    _cur_lod = Globals.LOD.LOW
+    for chunk in _children:
+        remove_child(chunk)
+    _showing_children = false
 
     Globals.player_xz.connect(_on_player_xz)
 
 func _on_player_xz(pos: Vector2) -> void:
     var dist_to_player: float = (pos - Vector2(position.x, position.z)).length()
-
-    if dist_to_player >= Globals.high_lod_distance + Globals.medium_lod_distance:
-        set_lod(Globals.LOD.LOW)
-
-    elif dist_to_player >= Globals.high_lod_distance:
-        set_lod(Globals.LOD.MEDIUM)
-
+    if dist_to_player <= Globals.lod_ranges[_lod] and not _showing_children:
+        _show_children()
     else:
-        set_lod(Globals.LOD.HIGH)
+        _show_self()
 
-func set_lod(new_lod: Globals.LOD) -> void:
+func _show_children() -> void:
+    remove_child(_this)
+    for child in _children:
+        add_child(child)
+    _showing_children = true
 
-    if new_lod == _cur_lod:
-        return
-
-    # Remove current LOD
-    match _cur_lod:
-        Globals.LOD.HIGH:
-            for chunk in _high_lod:
-                _high_lod_parent.remove_child(chunk)
-        Globals.LOD.MEDIUM:
-            for chunk in _med_lod:
-                _med_lod_parent.remove_child(chunk)
-        Globals.LOD.LOW:
-            remove_child(_low_lod)
-
-    # Add new LOD
-    match new_lod:
-        Globals.LOD.HIGH:
-            for chunk in _high_lod:
-                _high_lod_parent.add_child(chunk)
-        Globals.LOD.MEDIUM:
-            for chunk in _med_lod:
-                _med_lod_parent.add_child(chunk)
-        Globals.LOD.LOW:
-            add_child(_low_lod)
-
-    _cur_lod = new_lod
+func _show_self() -> void:
+    for child in _children:
+        remove_child(child)
+    add_child(_this)
+    _showing_children = false
