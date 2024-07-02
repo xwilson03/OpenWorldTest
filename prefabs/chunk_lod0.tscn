@@ -1,33 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://dslh1dcn1u7cd"]
+[gd_scene load_steps=5 format=3 uid="uid://cbqlvj8hu64ol"]
 
-[ext_resource type="PackedScene" uid="uid://wnewi44saic7" path="res://prefabs/chunk_lod1.tscn" id="1_t6tsl"]
+[ext_resource type="PackedScene" uid="uid://dqykdw7rhdufv" path="res://prefabs/chunk_lod1.tscn" id="1_pfydw"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_4djl8"]
+[sub_resource type="BoxMesh" id="BoxMesh_u4piu"]
 size = Vector3(160, 0.25, 160)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7cju"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uudg"]
 albedo_color = Color(0.391409, 0.0752441, 2.40654e-08, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e03f8"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_pqvma"]
 size = Vector3(160, 0.25, 160)
 
-[node name="LowLODChunk" type="StaticBody3D"]
+[node name="ChunkL0" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_4djl8")
-surface_material_override/0 = SubResource("StandardMaterial3D_s7cju")
+[node name="this" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_e03f8")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="this"]
+mesh = SubResource("BoxMesh_u4piu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5uudg")
 
-[node name="MediumLODChunk1" parent="." instance=ExtResource("1_t6tsl")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="this"]
+shape = SubResource("BoxShape3D_pqvma")
+
+[node name="ChunkL1_1" parent="." instance=ExtResource("1_pfydw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -40)
 
-[node name="MediumLODChunk2" parent="." instance=ExtResource("1_t6tsl")]
+[node name="ChunkL1_2" parent="." instance=ExtResource("1_pfydw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -40)
 
-[node name="MediumLODChunk3" parent="." instance=ExtResource("1_t6tsl")]
+[node name="ChunkL1_3" parent="." instance=ExtResource("1_pfydw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 40)
 
-[node name="MediumLODChunk4" parent="." instance=ExtResource("1_t6tsl")]
+[node name="ChunkL1_4" parent="." instance=ExtResource("1_pfydw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 40)

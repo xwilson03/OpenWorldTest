@@ -1,19 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://craanbr6pjx02"]
+[gd_scene load_steps=4 format=3 uid="uid://rb1oqj4ej4bj"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_25gpj"]
+[sub_resource type="BoxMesh" id="BoxMesh_jb54k"]
 size = Vector3(40, 0.25, 40)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo2s1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgiam"]
 albedo_color = Color(0, 0.237179, 0.0603443, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vxaw8"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7igga"]
 size = Vector3(40, 0.25, 40)
 
-[node name="HighLODChunk" type="StaticBody3D"]
+[node name="ChunkL2" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_25gpj")
-surface_material_override/0 = SubResource("StandardMaterial3D_qo2s1")
+[node name="this" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_vxaw8")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="this"]
+mesh = SubResource("BoxMesh_jb54k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bgiam")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="this"]
+shape = SubResource("BoxShape3D_7igga")
