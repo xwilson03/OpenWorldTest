@@ -8,8 +8,8 @@ class_name Chunk
 var _showing_children: bool
 
 func _ready() -> void:
-    for chunk in _children:
-        remove_child(chunk)
+    for child in _children:
+        remove_child(child)
     _showing_children = false
 
     if (Globals.lod_ranges[_lod] > 0):
