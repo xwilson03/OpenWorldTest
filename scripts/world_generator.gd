@@ -3,7 +3,6 @@ class_name WorldGenerator
 
 @export var world_radius: int
 @export var chunk_size: float
-@export var chunk_boundary_tolerance: float
 
 @export var high_lod_distance: float
 @export var medium_lod_distance: float
@@ -18,7 +17,6 @@ func _ready() -> void:
     # Initialize global world variables
     Globals.world_radius = world_radius
     Globals.chunk_size = chunk_size
-    Globals.chunk_boundary_tolerance = chunk_boundary_tolerance
 
     Globals.high_lod_distance = high_lod_distance
     Globals.medium_lod_distance = medium_lod_distance

@@ -21,7 +21,6 @@ max_follow_distance = 200.0
 script = ExtResource("4_yaodl")
 world_radius = 20
 chunk_size = 40.4
-chunk_boundary_tolerance = 0.1
 high_lod_distance = 120.0
 medium_lod_distance = 240.0
 
