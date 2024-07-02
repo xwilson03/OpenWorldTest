@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://rb1oqj4ej4bj"]
+[gd_scene load_steps=5 format=3 uid="uid://rb1oqj4ej4bj"]
+
+[ext_resource type="Script" path="res://scripts/chunk.gd" id="1_p5rq3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jb54k"]
 size = Vector3(40, 0.25, 40)
@@ -9,7 +11,9 @@ albedo_color = Color(0, 0.237179, 0.0603443, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7igga"]
 size = Vector3(40, 0.25, 40)
 
-[node name="ChunkL2" type="Node3D"]
+[node name="ChunkL2" type="Node3D" node_paths=PackedStringArray("_this")]
+script = ExtResource("1_p5rq3")
+_this = NodePath("this")
 
 [node name="this" type="StaticBody3D" parent="."]
 
