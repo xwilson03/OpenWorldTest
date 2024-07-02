@@ -6,6 +6,7 @@ class_name Chunk
 @export var _children: Array[Chunk]
 
 var _showing_children: bool
+var _last_pos := Vector2(0.01, 0.01)
 
 func _ready() -> void:
     for child in _children:
@@ -16,7 +17,7 @@ func _ready() -> void:
         Globals.player_xz.connect(_on_player_xz)
 
 func _on_player_xz(pos: Vector2) -> void:
-    if !is_inside_tree():
+    if !is_inside_tree() or pos == _last_pos:
         return
 
     var dist_to_player: float = (pos - (Vector2(global_position.x, global_position.z))).length()
@@ -24,6 +25,8 @@ func _on_player_xz(pos: Vector2) -> void:
         _show_children()
     else:
         _show_self()
+
+    _last_pos = pos
 
 func _show_children() -> void:
     if _showing_children:
