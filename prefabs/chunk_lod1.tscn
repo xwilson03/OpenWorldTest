@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqykdw7rhdufv"]
+
+[ext_resource type="PackedScene" uid="uid://rb1oqj4ej4bj" path="res://prefabs/chunk_lod2.tscn" id="1_hhixd"]
+[ext_resource type="Script" path="res://scripts/chunk.gd" id="1_ial62"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gnahl"]
+size = Vector3(20, 0.25, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvkp4"]
+albedo_color = Color(0.372939, 0.339155, 4.81307e-07, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6m4va"]
+size = Vector3(20, 0.25, 20)
+
+[node name="ChunkL1" type="Node3D" node_paths=PackedStringArray("_this", "_children")]
+script = ExtResource("1_ial62")
+_lod = 1
+_this = NodePath("this")
+_children = [NodePath("ChunkL2_1"), NodePath("ChunkL2_2"), NodePath("ChunkL2_3"), NodePath("ChunkL2_4")]
+
+[node name="this" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="this"]
+mesh = SubResource("BoxMesh_gnahl")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cvkp4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="this"]
+shape = SubResource("BoxShape3D_6m4va")
+
+[node name="ChunkL2_1" parent="." instance=ExtResource("1_hhixd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
+
+[node name="ChunkL2_2" parent="." instance=ExtResource("1_hhixd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
+
+[node name="ChunkL2_3" parent="." instance=ExtResource("1_hhixd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+
+[node name="ChunkL2_4" parent="." instance=ExtResource("1_hhixd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)

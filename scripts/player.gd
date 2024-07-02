@@ -7,7 +7,7 @@ class_name Player
 @export var fall_acceleration: float = 3
 
 var target_velocity := Vector3.ZERO
-
+var _first_frame: bool = true
 
 func _init() -> void:
     Globals.set_camera_x.connect(_on_set_camera_x)
@@ -51,5 +51,6 @@ func _physics_process(delta: float) -> void:
     # Apply velocity
     move_and_slide()
 
-    # Broadcast position
-    Globals.player_xz.emit(Vector2(position.x, position.z))
+    # Broadcast position if it changed
+    if get_position_delta().length_squared() > 0 or _first_frame:
+        Globals.player_xz.emit(Vector2(position.x, position.z))
