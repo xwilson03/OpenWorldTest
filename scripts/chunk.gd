@@ -1,8 +1,11 @@
 extends Node3D
 class_name Chunk
 
-@export var _high_lod: Node3D
-@export var _med_lod: Node3D
+@export var _high_lod_parent: Node3D
+@export var _high_lod: Array[Node3D]
+@export var _med_lod_parent: Node3D
+@export var _med_lod: Array[Node3D]
+@export var _low_lod_parent: Node3D
 @export var _low_lod: Node3D
 
 var _cur_lod: LOD
@@ -14,8 +17,10 @@ enum LOD {
 }
 
 func _ready() -> void:
-    remove_child(_high_lod)
-    remove_child(_med_lod)
+    for chunk in _high_lod:
+        _high_lod_parent.remove_child(chunk)
+    for chunk in _med_lod:
+        _med_lod_parent.remove_child(chunk)
     _cur_lod = LOD.LOW
 
     Globals.player_xz.connect(_on_player_xz)
@@ -23,17 +28,14 @@ func _ready() -> void:
 func _on_player_xz(pos: Vector2) -> void:
     var dist_to_player: float = (pos - Vector2(position.x, position.z)).length()
 
-    dist_to_player -= Globals.high_lod_distance
-    if (dist_to_player <= 0):
-        set_lod(LOD.HIGH)
-        return
+    if dist_to_player >= Globals.high_lod_distance + Globals.medium_lod_distance:
+        set_lod(LOD.LOW)
 
-    dist_to_player -= Globals.medium_lod_distance
-    if (dist_to_player <= 0):
+    elif dist_to_player >= Globals.high_lod_distance:
         set_lod(LOD.MEDIUM)
-        return
 
-    set_lod(LOD.LOW)
+    else:
+        set_lod(LOD.HIGH)
 
 func set_lod(new_lod: LOD) -> void:
 
@@ -43,18 +45,22 @@ func set_lod(new_lod: LOD) -> void:
     # Remove current LOD
     match _cur_lod:
         LOD.HIGH:
-            remove_child(_high_lod)
+            for chunk in _high_lod:
+                _high_lod_parent.remove_child(chunk)
         LOD.MEDIUM:
-            remove_child(_med_lod)
+            for chunk in _med_lod:
+                _med_lod_parent.remove_child(chunk)
         LOD.LOW:
             remove_child(_low_lod)
 
     # Add new LOD
     match new_lod:
         LOD.HIGH:
-            add_child(_high_lod)
+            for chunk in _high_lod:
+                _high_lod_parent.add_child(chunk)
         LOD.MEDIUM:
-            add_child(_med_lod)
+            for chunk in _med_lod:
+                _med_lod_parent.add_child(chunk)
         LOD.LOW:
             add_child(_low_lod)
 
