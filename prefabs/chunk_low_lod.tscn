@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dslh1dcn1u7cd"]
+[gd_scene load_steps=5 format=3 uid="uid://dslh1dcn1u7cd"]
+
+[ext_resource type="PackedScene" uid="uid://wnewi44saic7" path="res://prefabs/chunk_medium_lod.tscn" id="1_t6tsl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4djl8"]
 size = Vector3(160, 0.25, 160)
@@ -17,3 +19,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_s7cju")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_e03f8")
+
+[node name="MediumLODChunk1" parent="." instance=ExtResource("1_t6tsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -40)
+
+[node name="MediumLODChunk2" parent="." instance=ExtResource("1_t6tsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -40)
+
+[node name="MediumLODChunk3" parent="." instance=ExtResource("1_t6tsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 40)
+
+[node name="MediumLODChunk4" parent="." instance=ExtResource("1_t6tsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 40)
