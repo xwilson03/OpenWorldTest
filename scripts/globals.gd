@@ -27,8 +27,6 @@ static var player_xz := Signal(instance._player_xz)
 # World Generation
 static var world_radius: int = 0
 static var chunk_size: float = 0
-
-# LOD parameters
 static var lod_ranges: Array[int] = []
 
 # Mouse Sensitivity
