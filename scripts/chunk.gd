@@ -8,20 +8,14 @@ class_name Chunk
 @export var _low_lod_parent: Node3D
 @export var _low_lod: Node3D
 
-var _cur_lod: LOD
-
-enum LOD {
-    HIGH,
-    MEDIUM,
-    LOW,
-}
+var _cur_lod: Globals.LOD
 
 func _ready() -> void:
     for chunk in _high_lod:
         _high_lod_parent.remove_child(chunk)
     for chunk in _med_lod:
         _med_lod_parent.remove_child(chunk)
-    _cur_lod = LOD.LOW
+    _cur_lod = Globals.LOD.LOW
 
     Globals.player_xz.connect(_on_player_xz)
 
@@ -29,39 +23,39 @@ func _on_player_xz(pos: Vector2) -> void:
     var dist_to_player: float = (pos - Vector2(position.x, position.z)).length()
 
     if dist_to_player >= Globals.high_lod_distance + Globals.medium_lod_distance:
-        set_lod(LOD.LOW)
+        set_lod(Globals.LOD.LOW)
 
     elif dist_to_player >= Globals.high_lod_distance:
-        set_lod(LOD.MEDIUM)
+        set_lod(Globals.LOD.MEDIUM)
 
     else:
-        set_lod(LOD.HIGH)
+        set_lod(Globals.LOD.HIGH)
 
-func set_lod(new_lod: LOD) -> void:
+func set_lod(new_lod: Globals.LOD) -> void:
 
     if new_lod == _cur_lod:
         return
 
     # Remove current LOD
     match _cur_lod:
-        LOD.HIGH:
+        Globals.LOD.HIGH:
             for chunk in _high_lod:
                 _high_lod_parent.remove_child(chunk)
-        LOD.MEDIUM:
+        Globals.LOD.MEDIUM:
             for chunk in _med_lod:
                 _med_lod_parent.remove_child(chunk)
-        LOD.LOW:
+        Globals.LOD.LOW:
             remove_child(_low_lod)
 
     # Add new LOD
     match new_lod:
-        LOD.HIGH:
+        Globals.LOD.HIGH:
             for chunk in _high_lod:
                 _high_lod_parent.add_child(chunk)
-        LOD.MEDIUM:
+        Globals.LOD.MEDIUM:
             for chunk in _med_lod:
                 _med_lod_parent.add_child(chunk)
-        LOD.LOW:
+        Globals.LOD.LOW:
             add_child(_low_lod)
 
     _cur_lod = new_lod

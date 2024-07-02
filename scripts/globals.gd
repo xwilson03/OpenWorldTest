@@ -47,3 +47,9 @@ enum DIRECTION {
     Z_POS,
     Z_NEG,
 }
+
+enum LOD {
+    HIGH,
+    MEDIUM,
+    LOW,
+}
