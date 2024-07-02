@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://scripts/chunk.gd" id="1_ial62"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gnahl"]
-size = Vector3(80, 0.25, 80)
+size = Vector3(20, 0.25, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvkp4"]
 albedo_color = Color(0.372939, 0.339155, 4.81307e-07, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6m4va"]
-size = Vector3(80, 0.25, 80)
+size = Vector3(20, 0.25, 20)
 
 [node name="ChunkL1" type="Node3D" node_paths=PackedStringArray("_this", "_children")]
 script = ExtResource("1_ial62")
@@ -29,13 +29,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cvkp4")
 shape = SubResource("BoxShape3D_6m4va")
 
 [node name="ChunkL2_1" parent="." instance=ExtResource("1_hhixd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
 
 [node name="ChunkL2_2" parent="." instance=ExtResource("1_hhixd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
 
 [node name="ChunkL2_3" parent="." instance=ExtResource("1_hhixd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
 
 [node name="ChunkL2_4" parent="." instance=ExtResource("1_hhixd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)

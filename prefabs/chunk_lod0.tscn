@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dqykdw7rhdufv" path="res://prefabs/chunk_lod1.tscn" id="1_pfydw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u4piu"]
-size = Vector3(160, 0.25, 160)
+size = Vector3(40, 0.25, 40)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uudg"]
 albedo_color = Color(0.391409, 0.0752441, 2.40654e-08, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pqvma"]
-size = Vector3(160, 0.25, 160)
+size = Vector3(40, 0.25, 40)
 
 [node name="ChunkL0" type="Node3D" node_paths=PackedStringArray("_this", "_children")]
 script = ExtResource("1_nxk0v")
@@ -29,13 +29,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5uudg")
 shape = SubResource("BoxShape3D_pqvma")
 
 [node name="ChunkL1_1" parent="." instance=ExtResource("1_pfydw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
 
 [node name="ChunkL1_2" parent="." instance=ExtResource("1_pfydw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
 
 [node name="ChunkL1_3" parent="." instance=ExtResource("1_pfydw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
 
 [node name="ChunkL1_4" parent="." instance=ExtResource("1_pfydw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
