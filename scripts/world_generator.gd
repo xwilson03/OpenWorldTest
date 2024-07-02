@@ -7,7 +7,7 @@ class_name WorldGenerator
 @export var high_lod_distance: float
 @export var medium_lod_distance: float
 
-const chunk_scene: PackedScene = preload("res://prefabs/chunk.tscn")
+const chunk_scene: PackedScene = preload("res://prefabs/chunk_lod0.tscn")
 
 var world_chunks: ChunkGrid
 var world_size: Vector2i

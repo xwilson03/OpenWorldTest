@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://wnewi44saic7"]
 
-[ext_resource type="PackedScene" uid="uid://craanbr6pjx02" path="res://prefabs/chunk_high_lod.tscn" id="1_yqcbq"]
+[ext_resource type="PackedScene" uid="uid://craanbr6pjx02" path="res://prefabs/chunk_lod2.tscn" id="1_yqcbq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ganvj"]
 size = Vector3(80, 0.25, 80)
