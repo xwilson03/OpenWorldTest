@@ -51,5 +51,6 @@ func _physics_process(delta: float) -> void:
     # Apply velocity
     move_and_slide()
 
-    # Broadcast position
-    Globals.player_xz.emit(Vector2(position.x, position.z))
+    # Broadcast position if it changed
+    if get_position_delta().length_squared() > 0:
+        Globals.player_xz.emit(Vector2(position.x, position.z))
