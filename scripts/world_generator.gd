@@ -3,9 +3,7 @@ class_name WorldGenerator
 
 @export var world_radius: int
 @export var chunk_size: float
-
-@export var high_lod_distance: float
-@export var medium_lod_distance: float
+@export var lod_ranges: Array[int]
 
 const chunk_scene: PackedScene = preload("res://prefabs/chunk_lod0.tscn")
 
@@ -17,9 +15,7 @@ func _ready() -> void:
     # Initialize global world variables
     Globals.world_radius = world_radius
     Globals.chunk_size = chunk_size
-
-    Globals.high_lod_distance = high_lod_distance
-    Globals.medium_lod_distance = medium_lod_distance
+    Globals.lod_ranges = lod_ranges
 
     # Allocate chunk array
     var row_size: int = Globals.world_radius * 2
