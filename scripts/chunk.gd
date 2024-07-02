@@ -16,7 +16,10 @@ func _ready() -> void:
         Globals.player_xz.connect(_on_player_xz)
 
 func _on_player_xz(pos: Vector2) -> void:
-    var dist_to_player: float = (pos - Vector2(position.x, position.z)).length()
+    if !is_inside_tree():
+        return
+
+    var dist_to_player: float = (pos - (Vector2(global_position.x, global_position.z))).length()
     if dist_to_player <= Globals.lod_ranges[_lod]:
         _show_children()
     else:
